@@ -1,0 +1,140 @@
+syntax = "proto3";
+package roboworld.v1;
+
+option csharp_namespace = "RoboWorld.Contracts.V1";
+
+// Proposal: use 4-byte big-endian length-prefixed protobuf Envelope over local TCP.
+message Envelope {
+  uint32 protocol_major = 1;
+  uint32 protocol_minor = 2;
+  string session_id = 3;
+  string request_id = 4;
+  string world_id = 5;
+  string robot_id = 6;
+  string component_id = 7;
+  int64 sim_time_ns = 8;
+  uint64 sequence = 9;
+  oneof payload {
+    Hello hello = 20;
+    LifecycleCommand command = 21;
+    CommandResult result = 22;
+    HardwareEvent hardware_event = 23;
+    WorldStateSnapshot world_state = 24;
+    ComponentDiagnostic diagnostic = 25;
+    HealthReport health = 26;
+    SimulationTick tick = 27;
+  }
+}
+message Hello {
+  string client_kind = 1;    // godot, robotservice, diagnostic-tool
+  repeated string capabilities = 2;
+  string instance_version = 3;
+  bytes session_nonce = 4;
+}
+message LifecycleCommand {
+  enum Action {
+    ACTION_UNSPECIFIED = 0;
+    START = 1;
+    PAUSE = 2;
+    RESUME = 3;
+    STOP = 4;
+    RESET_MCU = 5;
+    LOAD_FIRMWARE = 6;
+    SAVE_DESIGN = 7;
+    REQUEST_CHECKPOINT = 8;
+    LOAD_CHECKPOINT = 9;
+    GET_ENDPOINTS = 10;
+  }
+  Action action = 1;
+  string target_id = 2;
+  string artifact_sha256 = 3;
+  uint64 expected_revision = 4;
+  string relative_artifact_path = 5;
+}
+message CommandResult {
+  bool ok = 1;
+  string error_code = 2;
+  string detail = 3;
+  uint64 revision = 4;
+  repeated Endpoint endpoint = 5;
+}
+message Endpoint {
+  string id = 1;
+  string protocol = 2;  // virtual-uart, diagnostics etc.
+  string uri = 3;       // local ephemeral endpoint; do not log admin credentials
+  string controller_id = 4;
+  string peripheral_id = 5;
+}
+message SimulationTick {
+  uint64 tick_index = 1;
+  int64 start_ns = 2;
+  int64 delta_ns = 3;
+  double real_time_factor = 4;
+}
+message Vec3 {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+}
+message Quat {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+  double w = 4;
+}
+message BodyState {
+  string id = 1;
+  Vec3 position_m = 2;
+  Quat rotation_xyzw = 3;
+  Vec3 linear_velocity_mps = 4;
+  Vec3 angular_velocity_radps = 5;
+}
+message WorldStateSnapshot {
+  uint64 tick_index = 1;
+  int64 sim_time_ns = 2;
+  repeated BodyState bodies = 3;
+  double real_time_factor = 4;
+  uint64 physical_state_hash = 5;
+}
+message HardwareEvent {
+  enum Kind {
+    KIND_UNSPECIFIED = 0;
+    UART_BYTES = 1;
+    GPIO_LEVEL = 2;
+    PWM_OUTPUT = 3;
+    SENSOR_SAMPLE = 4;
+    ENCODER_PULSE = 5;
+    BUS_TRANSACTION = 6;
+  }
+  Kind kind = 1;
+  string endpoint_id = 2;
+  bytes payload = 3;
+  double scalar = 4;
+  string unit = 5;
+  int64 effective_sim_time_ns = 6;
+  string fidelity_note = 7;
+}
+message ComponentDiagnostic {
+  enum Status {
+    UNKNOWN = 0;
+    OPERATIONAL = 1;
+    FAILED = 2;
+    DEGRADED = 3;
+    INACTIVE = 4;
+  }
+  Status status = 1;
+  string component_path = 2;
+  string reason_code = 3;
+  string reason = 4;
+  string root_fault_id = 5;
+  int64 last_sample_sim_time_ns = 6;
+  map<string, double> numeric_metrics = 7;
+}
+message HealthReport {
+  string process_name = 1;
+  string version = 2;
+  string state = 3;
+  string error_code = 4;
+  uint64 memory_bytes = 5;
+  double cpu_percent = 6;
+}

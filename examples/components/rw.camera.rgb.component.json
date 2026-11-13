@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "id": "rw.camera.rgb",
+  "version": "1.0.0",
+  "display_name": "Robot Camera",
+  "category": "sensor",
+  "mechanical": { "mass_kg": 0.045, "size_m": [0.08, 0.05, 0.07] },
+  "mount_ports": [
+    {
+      "id": "mount",
+      "kind": "structural",
+      "frame": { "position_m": [0, -0.025, 0.22], "rotation_xyzw": [0, 0, 0, 1] },
+      "size_class": "M",
+      "mate_kinds": ["structural"]
+    }
+  ],
+  "electrical_ports": [],
+  "simulation": {
+    "model": "rgb_camera",
+    "fidelity": "experimental",
+    "parameters": {
+      "horizontal_fov_deg": 75,
+      "resolution_width_px": 640,
+      "resolution_height_px": 480,
+      "near_clip_m": 0.05,
+      "far_clip_m": 100,
+      "enabled": true
+    },
+    "limitations": ["Viewport camera only; no image transport, frame capture, or computer vision."]
+  },
+  "geometry": { "primitive": "box" },
+  "provenance": { "kind": "generic", "source_urls": [], "license": "RoboWorld example fixture (no third-party geometry)" }
+}

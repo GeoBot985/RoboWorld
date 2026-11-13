@@ -1,0 +1,1471 @@
+{
+  "schema_version": "1.1",
+  "id": "room-20x20",
+  "display_name": "RoboWorld Warehouse Demonstration · 20 m × 20 m",
+  "bounds_m": [
+    20,
+    3,
+    20
+  ],
+  "gravity_mps2": [
+    0,
+    -9.81,
+    0
+  ],
+  "world_seed": 42,
+  "objects": [
+    {
+      "id": "room",
+      "display_name": "Warehouse room",
+      "asset_ref": "rw.world.room",
+      "transform": {
+        "position_m": [
+          0,
+          1.5,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "room",
+        "size_m": [
+          20,
+          3,
+          20
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "enclosure"
+      ]
+    },
+    {
+      "id": "table",
+      "display_name": "Service table",
+      "asset_ref": "rw.world.table",
+      "transform": {
+        "position_m": [
+          2,
+          0.4,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.5,
+          0.8,
+          0.8
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "support_surface"
+      ]
+    },
+    {
+      "id": "glass",
+      "display_name": "Glass sample",
+      "asset_ref": "rw.world.glass",
+      "transform": {
+        "position_m": [
+          2,
+          0.9,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "cylinder",
+        "size_m": [
+          0.08,
+          0.2,
+          0.08
+        ]
+      },
+      "physics": {
+        "body_type": "dynamic",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "pickable"
+      ]
+    },
+    {
+      "id": "sensor-crate",
+      "display_name": "Sensor test crate",
+      "asset_ref": "rw.world.crate.blue",
+      "transform": {
+        "position_m": [
+          0,
+          0.3,
+          -3.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.65,
+          0.6,
+          0.55
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "obstacle",
+        "sensor_reference"
+      ]
+    },
+    {
+      "id": "rack-left-0-upright-a",
+      "display_name": "Left rack upright",
+      "asset_ref": "rw.world.rack.frame",
+      "transform": {
+        "position_m": [
+          -3.1,
+          0.9,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.16,
+          1.8,
+          0.16
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-left-0-upright-b",
+      "display_name": "Left rack upright",
+      "asset_ref": "rw.world.rack.frame",
+      "transform": {
+        "position_m": [
+          -1.8000000000000003,
+          0.9,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.16,
+          1.8,
+          0.16
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-left-0-shelf-0",
+      "display_name": "Left shelf level 1",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          -2.45,
+          0.45,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-left-0-shelf-1",
+      "display_name": "Left shelf level 2",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          -2.45,
+          1.0,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-left-0-shelf-2",
+      "display_name": "Left shelf level 3",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          -2.45,
+          1.55,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-left-1-upright-a",
+      "display_name": "Left rack upright",
+      "asset_ref": "rw.world.rack.frame",
+      "transform": {
+        "position_m": [
+          -3.1,
+          0.9,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.16,
+          1.8,
+          0.16
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-left-1-upright-b",
+      "display_name": "Left rack upright",
+      "asset_ref": "rw.world.rack.frame",
+      "transform": {
+        "position_m": [
+          -1.8000000000000003,
+          0.9,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.16,
+          1.8,
+          0.16
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-left-1-shelf-0",
+      "display_name": "Left shelf level 1",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          -2.45,
+          0.45,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-left-1-shelf-1",
+      "display_name": "Left shelf level 2",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          -2.45,
+          1.0,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-left-1-shelf-2",
+      "display_name": "Left shelf level 3",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          -2.45,
+          1.55,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "pallet-left-0",
+      "display_name": "Left pallet load",
+      "asset_ref": "rw.world.crate.orange",
+      "transform": {
+        "position_m": [
+          -2.45,
+          0.3,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.52,
+          0.6,
+          0.52
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "obstacle"
+      ]
+    },
+    {
+      "id": "pallet-left-1",
+      "display_name": "Left pallet load",
+      "asset_ref": "rw.world.crate.orange",
+      "transform": {
+        "position_m": [
+          -2.45,
+          0.3,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.52,
+          0.6,
+          0.52
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "obstacle"
+      ]
+    },
+    {
+      "id": "rack-right-0-upright-a",
+      "display_name": "Right rack upright",
+      "asset_ref": "rw.world.rack.frame",
+      "transform": {
+        "position_m": [
+          1.8000000000000003,
+          0.9,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.16,
+          1.8,
+          0.16
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-right-0-upright-b",
+      "display_name": "Right rack upright",
+      "asset_ref": "rw.world.rack.frame",
+      "transform": {
+        "position_m": [
+          3.1,
+          0.9,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.16,
+          1.8,
+          0.16
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-right-0-shelf-0",
+      "display_name": "Right shelf level 1",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          2.45,
+          0.45,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-right-0-shelf-1",
+      "display_name": "Right shelf level 2",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          2.45,
+          1.0,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-right-0-shelf-2",
+      "display_name": "Right shelf level 3",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          2.45,
+          1.55,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-right-1-upright-a",
+      "display_name": "Right rack upright",
+      "asset_ref": "rw.world.rack.frame",
+      "transform": {
+        "position_m": [
+          1.8000000000000003,
+          0.9,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.16,
+          1.8,
+          0.16
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-right-1-upright-b",
+      "display_name": "Right rack upright",
+      "asset_ref": "rw.world.rack.frame",
+      "transform": {
+        "position_m": [
+          3.1,
+          0.9,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.16,
+          1.8,
+          0.16
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-right-1-shelf-0",
+      "display_name": "Right shelf level 1",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          2.45,
+          0.45,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-right-1-shelf-1",
+      "display_name": "Right shelf level 2",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          2.45,
+          1.0,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "rack-right-1-shelf-2",
+      "display_name": "Right shelf level 3",
+      "asset_ref": "rw.world.rack.shelf",
+      "transform": {
+        "position_m": [
+          2.45,
+          1.55,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.45,
+          0.1,
+          0.7
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "shelf"
+      ]
+    },
+    {
+      "id": "pallet-right-0",
+      "display_name": "Right pallet load",
+      "asset_ref": "rw.world.crate.orange",
+      "transform": {
+        "position_m": [
+          2.45,
+          0.3,
+          -5.8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.52,
+          0.6,
+          0.52
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "obstacle"
+      ]
+    },
+    {
+      "id": "pallet-right-1",
+      "display_name": "Right pallet load",
+      "asset_ref": "rw.world.crate.orange",
+      "transform": {
+        "position_m": [
+          2.45,
+          0.3,
+          -8.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.52,
+          0.6,
+          0.52
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "obstacle"
+      ]
+    },
+    {
+      "id": "pillar-west",
+      "display_name": "West aisle pillar",
+      "asset_ref": "rw.world.pillar",
+      "transform": {
+        "position_m": [
+          -4.1,
+          0.85,
+          -3.2
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "cylinder",
+        "size_m": [
+          0.45,
+          1.7,
+          0.45
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "obstacle"
+      ]
+    },
+    {
+      "id": "pillar-east",
+      "display_name": "East aisle pillar",
+      "asset_ref": "rw.world.pillar",
+      "transform": {
+        "position_m": [
+          4.1,
+          0.85,
+          -7.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "cylinder",
+        "size_m": [
+          0.45,
+          1.7,
+          0.45
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "obstacle"
+      ]
+    },
+    {
+      "id": "crate-east",
+      "display_name": "East route crate",
+      "asset_ref": "rw.world.crate.green",
+      "transform": {
+        "position_m": [
+          3.55,
+          0.28,
+          -3.4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.6,
+          0.56,
+          0.6
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "obstacle"
+      ]
+    },
+    {
+      "id": "lane-mark-0",
+      "display_name": "Lane centre marking 1",
+      "asset_ref": "rw.world.marking.white",
+      "transform": {
+        "position_m": [
+          0,
+          0.004,
+          -1
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.045,
+          0.008,
+          0.48
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "lane-mark-1",
+      "display_name": "Lane centre marking 2",
+      "asset_ref": "rw.world.marking.white",
+      "transform": {
+        "position_m": [
+          0,
+          0.004,
+          -2
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.045,
+          0.008,
+          0.48
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "lane-mark-2",
+      "display_name": "Lane centre marking 3",
+      "asset_ref": "rw.world.marking.white",
+      "transform": {
+        "position_m": [
+          0,
+          0.004,
+          -3
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.045,
+          0.008,
+          0.48
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "lane-mark-3",
+      "display_name": "Lane centre marking 4",
+      "asset_ref": "rw.world.marking.white",
+      "transform": {
+        "position_m": [
+          0,
+          0.004,
+          -4
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.045,
+          0.008,
+          0.48
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "lane-mark-4",
+      "display_name": "Lane centre marking 5",
+      "asset_ref": "rw.world.marking.white",
+      "transform": {
+        "position_m": [
+          0,
+          0.004,
+          -5
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.045,
+          0.008,
+          0.48
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "lane-mark-5",
+      "display_name": "Lane centre marking 6",
+      "asset_ref": "rw.world.marking.white",
+      "transform": {
+        "position_m": [
+          0,
+          0.004,
+          -6
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.045,
+          0.008,
+          0.48
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "lane-mark-6",
+      "display_name": "Lane centre marking 7",
+      "asset_ref": "rw.world.marking.white",
+      "transform": {
+        "position_m": [
+          0,
+          0.004,
+          -7
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.045,
+          0.008,
+          0.48
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "lane-mark-7",
+      "display_name": "Lane centre marking 8",
+      "asset_ref": "rw.world.marking.white",
+      "transform": {
+        "position_m": [
+          0,
+          0.004,
+          -8
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.045,
+          0.008,
+          0.48
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "lane-mark-8",
+      "display_name": "Lane centre marking 9",
+      "asset_ref": "rw.world.marking.white",
+      "transform": {
+        "position_m": [
+          0,
+          0.004,
+          -9
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.045,
+          0.008,
+          0.48
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "lane-edge-left",
+      "display_name": "Left lane edge",
+      "asset_ref": "rw.world.marking.yellow",
+      "transform": {
+        "position_m": [
+          -1.7,
+          0.004,
+          -5.5
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.04,
+          0.008,
+          8
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "lane-edge-right",
+      "display_name": "Right lane edge",
+      "asset_ref": "rw.world.marking.yellow",
+      "transform": {
+        "position_m": [
+          1.7,
+          0.004,
+          -5.5
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          0.04,
+          0.008,
+          8
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "visual_only"
+      ]
+    },
+    {
+      "id": "sign-aisle-01",
+      "display_name": "AISLE 01  →",
+      "asset_ref": "rw.world.sign.blue",
+      "transform": {
+        "position_m": [
+          -1.5,
+          1.75,
+          -9.65
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.4,
+          0.45,
+          0.08
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "sign"
+      ]
+    },
+    {
+      "id": "sign-loading",
+      "display_name": "LOADING BAY",
+      "asset_ref": "rw.world.sign.orange",
+      "transform": {
+        "position_m": [
+          7.5,
+          1.75,
+          -5.5
+        ],
+        "rotation_xyzw": [
+          0,
+          0.7071067811865475,
+          0,
+          0.7071067811865476
+        ]
+      },
+      "geometry": {
+        "primitive": "box",
+        "size_m": [
+          1.7,
+          0.45,
+          0.08
+        ]
+      },
+      "physics": {
+        "body_type": "static",
+        "friction_coefficient": 0.7
+      },
+      "tags": [
+        "sign"
+      ]
+    }
+  ]
+}

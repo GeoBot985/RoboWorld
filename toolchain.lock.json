@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "lock_date": "2026-11-07",
+  "target": {
+    "os": "Windows 11 x64",
+    "architecture": "x86_64"
+  },
+  "tools": [
+    {
+      "name": "Godot Engine .NET editor",
+      "version": "4.7.2-stable",
+      "runtime": "Windows x86_64",
+      "origin": "https://github.com/godotengine/godot/releases/tag/4.7.2-stable",
+      "artifact": "Godot_v4.7.2-stable_mono_win64.zip",
+      "sha256": "A2A48473A7414C5F19FAB690518CAEBB738C09EF9601F6BD2388676A7F53B3C0",
+      "license": "MIT",
+      "notes": "Godot 4.7.2 stable; T00 opens project, builds C# and exports the Windows test world."
+    },
+    {
+      "name": "Godot export templates",
+      "version": "4.7.2-stable",
+      "runtime": "Windows x86_64",
+      "origin": "https://github.com/godotengine/godot/releases/tag/4.7.2-stable",
+      "artifact": "Godot_v4.7.2-stable_mono_export_templates.tpz",
+      "sha256": "92F8681E349EF1F90891B792DA95E3B2B0BD1ED610B78018C58FEB2D87E15A9D",
+      "license": "MIT plus bundled third-party notices",
+      "notes": "Installed under the version-specific Godot export_templates directory; Windows export passed."
+    },
+    {
+      "name": ".NET SDK",
+      "version": "10.0.403",
+      "runtime": "Windows x64",
+      "origin": "https://dotnet.microsoft.com/download/dotnet/10.0",
+      "artifact": "dotnet-sdk-10.0.403-win-x64.zip",
+      "sha256": "F398979A9CAC2DBA760771C4E01F16E431DCD6BCFB2213E3E8F5B3D354095CC0",
+      "license": "MIT plus bundled third-party notices",
+      "notes": "Installed workspace-locally; runtime 10.0.14. Godot project targets net8.0, supported by Godot 4.7. SHA-256 computed from the archive; SHA-512 matches Microsoft release metadata."
+    },
+    {
+      "name": "Renode",
+      "version": "1.17.0",
+      "runtime": "Windows x64 portable",
+      "origin": "https://github.com/renode/renode/releases/tag/v1.17.0",
+      "artifact": "renode-1.17.0.windows-portable.zip",
+      "sha256": "18BCF145422039E8702C3E5F9864C7787561BFD5DEB7A3EE6E168ECF19E2B9DB",
+      "license": "MIT; bundled dependency notices to inventory",
+      "notes": "The stock archive hash identifies the upstream input. The local integration rebuilds Infrastructure.dll and Renode.dll from Renode source commit ab721d88e135a1bcb8ed2ecc5a38f51cbe61fdd2 and Infrastructure submodule commit 066a7f13c052215632d469c995c89aea37c573b1 with loopback monitor/UART/GDB/server-terminal and external-control listeners. The ExternalControl patch allocates its receive header buffer once outside the loop. See tools/build-renode-loopback.ps1 and the corresponding patch files; generated binaries and logs are not included."
+    },
+    {
+      "name": "Arm GNU Toolchain",
+      "version": "15.2.rel1",
+      "runtime": "Windows x86_64 host; arm-none-eabi target",
+      "origin": "https://developer.arm.com/-/media/Files/downloads/gnu/15.2.rel1/binrel/arm-gnu-toolchain-15.2.rel1-mingw-w64-x86_64-arm-none-eabi.zip",
+      "artifact": "arm-gnu-toolchain-15.2.rel1-mingw-w64-x86_64-arm-none-eabi.zip",
+      "sha256": "7936CAC895611023FFB22A64B8E426098C7104CB689778C1894572CA840B9ECE",
+      "license": "Arm GNU Toolchain component licenses",
+      "notes": "Compiler GCC 15.2.1; GDB 16.3.90.20250906-git. Cortex-M4 compile probe passed."
+    },
+    {
+      "name": "Python",
+      "version": "3.11.9",
+      "runtime": "Windows x64",
+      "origin": "https://www.python.org/downloads/release/python-3119/",
+      "artifact": "python-3.11.9-amd64.exe",
+      "sha256": "5EE42C4EEE1E6B4464BB23722F90B45303F79442DF63083F05322F1785F5FDDE",
+      "license": "PSF",
+      "notes": "Existing Python 3.11.9 used; matching official installer verified by SHA-256. Schema-validator dependency versions are pinned in python/requirements.txt."
+    },
+    {
+      "name": "Protocol Buffers C# runtime and compiler",
+      "version": "Google.Protobuf 3.36.2; Grpc.Tools 2.85.0",
+      "runtime": "NuGet-managed cross-platform packages",
+      "origin": "https://www.nuget.org/",
+      "artifact": "NuGet package lock in project assets",
+      "sha256": null,
+      "license": "BSD-3-Clause / Apache-2.0 package notices",
+      "notes": "Compiler provided by Grpc.Tools; restore/build passed. Exact NuGet package versions/content hashes are in src/RoboWorld.Contracts/packages.lock.json."
+    }
+  ],
+  "evidence_assets": [
+    {
+      "name": "Renode STM32F4 Discovery stock platform script",
+      "version": "Renode 1.17.0",
+      "origin": "https://github.com/renode/renode/blob/v1.17.0/scripts/single-node/stm32f4_discovery.resc",
+      "sha256": "7B8F0A9E1DBF0E2F9ED9125CDCA00406E1A2511A4A75A6B7679F42550F765164",
+      "notes": "Verified UART endpoint is sysbus.uart4; loaded without modifying the stock script."
+    },
+    {
+      "name": "RoboWorld Renode loopback patches",
+      "version": "Renode 1.17.0; Infrastructure submodule 066a7f13c052215632d469c995c89aea37c573b1",
+      "origin": "https://github.com/renode/renode/tree/v1.17.0",
+      "sha256": "46D63EF7591232FFD69EFAF649C3E63E0AF6427C6E74C337B481F3F56C3BD59E,0E3B3455DEDEAF018A70F82C920BDAB93555F4621D11326FB0C5D75429A40F99",
+      "notes": "Ordered SHA-256 values correspond to tools/renode-patches/renode-1.17.0-loopback-monitor.patch and renode-1.17.0-loopback-external-control.patch (loopback bind plus reused receive header buffer). Reproducible builder: tools/build-renode-loopback.ps1. Generated build evidence is not included."
+    }
+  ]
+}

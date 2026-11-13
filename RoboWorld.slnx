@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="src/RoboWorld.Contracts/RoboWorld.Contracts.csproj" />
+  <Project Path="src/RoboWorld.Domain/RoboWorld.Domain.csproj" />
+  <Project Path="src/RoboWorld.RobotService/RoboWorld.RobotService.csproj" />
+  <Project Path="godot/RoboWorld.Godot.csproj" />
+  <Project Path="tests/RoboWorld.Domain.Tests/RoboWorld.Domain.Tests.csproj" />
+  <Project Path="tests/RoboWorld.RobotService.Tests/RoboWorld.RobotService.Tests.csproj" />
+  <Project Path="tools/RoboWorld.ControllerProfileBuilder/RoboWorld.ControllerProfileBuilder.csproj" />
+</Solution>

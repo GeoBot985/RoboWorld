@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "id": "rw.wheel.standard",
+  "version": "1.0.0",
+  "display_name": "Rw Wheel Standard",
+  "category": "mobility",
+  "mechanical": {
+    "mass_kg": 0.2,
+    "size_m": [
+      0.11,
+      0.04,
+      0.11
+    ]
+  },
+  "mount_ports": [
+    {
+      "id": "hub",
+      "kind": "shaft",
+      "frame": {
+        "position_m": [
+          0,
+          0,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "size_class": "M"
+    }
+  ],
+  "electrical_ports": [],
+  "simulation": {
+    "model": "wheel",
+    "fidelity": "functional",
+    "parameters": {
+      "radius_m": 0.055,
+      "friction": 0.9
+    }
+  },
+  "geometry": {
+    "primitive": "box"
+  },
+  "provenance": {
+    "kind": "generic",
+    "source_urls": [],
+    "license": "RoboWorld example fixture (no third-party geometry)"
+  }
+}

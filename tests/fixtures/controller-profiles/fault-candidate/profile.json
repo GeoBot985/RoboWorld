@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "profileId": "rover-unqualified-95FD2F318F67CC3C",
+  "identity": {
+    "schemaVersion": 1,
+    "firmwareSha256": "5D5973A2E119167EF3C2EF18E8929E8AD9735AD65A63B639179256547575B6E9",
+    "controllerType": "stm32f407vg",
+    "boardContractId": "stm32f4_discovery_stm32f407vg",
+    "boardContractVersion": "1.0.0",
+    "robotGraphSha256": "A231842F6D4A2A4641E4DD2BAD84EDAB7E360DAD9BBCFFA95A8DA03E0D50C26F",
+    "componentDefinitionsSha256": "E3EE85EE70C6908793542F6800A0E30602625695270FAD5D1FC6F416791C90C4",
+    "peripheralMapSha256": "4279D89D44BCFC89676499A75D226007AE4FA9B8810DB0D97556AC12150272A7",
+    "initialStateSha256": "2EE7FF36D95FE0FA33AA5BC93673B6E80D197C1DBDEF5409E1C093F4F6854A22",
+    "characterizationSchemaVersion": "trace-schema-1",
+    "generatorVersion": "goal03-motor-uart-echo-noecho-controller-fault-1.0.0",
+    "modelSchemaVersion": "1",
+    "evaluatorVersion": "campaign-evaluator-2\u002Buart-transducer-6\u002Becho-pulse-state-3\u002Bnoecho-retain-1\u002Bmeasured-mcu-halt-latch-2\u002Bfault-source-diagnostic-1\u002Buart-response-timing-bracket-1",
+    "inputEnvelopeSha256": "A68CD5E24E6CDF9AEBA465AAB0E459EDA8EFBD0311B5C81EA30A59B420BEB56F"
+  },
+  "envelope": {
+    "supportedEndpoints": [
+      "controller.fault",
+      "gpio.pa0.echo",
+      "uart.rx"
+    ],
+    "supportedSignals": [
+      5,
+      1,
+      0
+    ],
+    "minimumSimTimeNs": 0,
+    "maximumSimTimeNs": 9223372036854775807,
+    "maximumEventsPerAdvance": 16,
+    "maximumUartBytesPerSecond": 115200
+  },
+  "modelDocumentSha256": "AE72F2165A7936F8712ECC1206937510E5FB65B6B4980D71727B6367EB13C502",
+  "traceCorpusSha256": "3DDCAEB248427396F0A77D2EC044D114B1A0302EC2A5452E614881E31EB2E815",
+  "heldOutSequencesSha256": "2A0F49541DD0019CA1BEE41736EF0B397DDD159954E1C19AE246F9E4EAF5DEC6",
+  "heldOutSequenceCount": 12,
+  "validationMetrics": {
+    "training_sequence_count": 20,
+    "heldout_sequence_count": 12,
+    "heldout_motor_command_count": 24,
+    "heldout_duty_error_p95_percentage_points": 0,
+    "heldout_duty_error_max_percentage_points": 0,
+    "uart_receive_bracket_p95_width_ns": 0,
+    "scheduled_input_to_output_latency_min_ns": 8333333,
+    "scheduled_input_to_output_latency_max_ns": 8333334,
+    "heldout_direction_mismatches": 0,
+    "heldout_echo_pulse_response_error_p95_mm": 1,
+    "heldout_echo_pulse_response_error_max_mm": 1,
+    "heldout_echo_uart_exact_grammar_fraction": 1,
+    "heldout_uart_line_boundary_exact_response_count": 4,
+    "heldout_uart_command_grammar_exact_response_count": 10,
+    "heldout_no_echo_sequences": 2,
+    "heldout_no_echo_stale_sensor_replies": 4,
+    "heldout_initial_invalid_sensor_sequences": 2,
+    "heldout_measured_mcu_halt_sequences": 2
+  },
+  "supportedBehaviors": [
+    "training-derived PING response",
+    "training-derived valid MOTOR command response",
+    "training-derived observed MOVE rejection response",
+    "training-derived observed overlength-line rejection response",
+    "measured per-tick PWM duty magnitude and direction for valid MOTOR operands",
+    "measured MCU_HALTED transition retains last peripheral outputs and suppresses subsequent UART replies",
+    "measured GPIO echo pulse width maps to training-derived SENSOR? response grammar",
+    "training-derived SENSOR? invalid response before first complete echo pulse",
+    "measured no-echo input retains last valid echo reading and valid flag",
+    "training-derived STATUS? response and exact measured MOTOR range/malformed command responses",
+    "training-derived exact 47-byte malformed UART line response and measured 48-byte overlength response"
+  ],
+  "unsupportedBehaviors": [
+    "malformed other than exact measured lines, unknown and unmeasured range-invalid UART commands",
+    "exact UART reply scheduling/latency, normal asynchronous byte timing and framing",
+    "loaded trajectory and motion fidelity",
+    "unseen firmware state and interrupts",
+    "other controller fault codes and peripheral corruption",
+    "incomplete-high timeout, overlapping/noisy pulse recovery, and sensor reset behavior"
+  ],
+  "fidelityLabel": "UNQUALIFIED"
+}

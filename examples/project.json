@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "id": "roboworld-starter",
+  "title": "RoboWorld Warehouse Demonstration",
+  "world_file": "worlds/room-20x20.world.json",
+  "robot_files": [
+    "robots/rover-01.robot.json",
+    "robots/arm-01.robot.json",
+    "robots/rover-slow-01.robot.json",
+    "robots/rover-multi-01.robot.json",
+    "robots/rover-camera-01.robot.json"
+  ],
+  "component_files": [
+    "components/rw.chassis.rect.component.json",
+    "components/rw.wheel.standard.component.json",
+    "components/rw.motor.geared.component.json",
+    "components/rw.driver.dual.component.json",
+    "components/rw.mcu.stm32f407vg.component.json",
+    "components/rw.sensor.distance.component.json",
+    "components/rw.caster.ball.component.json",
+    "components/rw.battery.pack12.component.json",
+    "components/rw.beam.structural.component.json",
+    "components/rw.motor.geared.slow.component.json",
+    "components/rw.mount.fixed.component.json",
+    "components/rw.mount.revolute.component.json",
+    "components/rw.primitive.box.component.json",
+    "components/rw.primitive.cylinder.component.json",
+    "components/rw.primitive.sphere.component.json",
+    "components/rw.camera.rgb.component.json"
+  ],
+  "default_mode": "advanced",
+  "settings": {
+    "physics_hz": 120,
+    "realtime_target": 1.0,
+    "renderer_target_fps": 60
+  }
+}

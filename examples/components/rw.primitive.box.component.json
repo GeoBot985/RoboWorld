@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "id": "rw.primitive.box",
+  "version": "1.0.0",
+  "display_name": "Box Primitive",
+  "category": "body",
+  "mechanical": { "mass_kg": 1.2, "size_m": [0.4, 0.05, 0.25] },
+  "mount_ports": [
+    { "id": "face_left", "kind": "structural", "frame": { "position_m": [-0.2, 0, 0], "rotation_xyzw": [0, 0, 0.7071067811865475, 0.7071067811865476] }, "size_class": "M", "mate_kinds": ["structural", "shaft"] },
+    { "id": "face_right", "kind": "structural", "frame": { "position_m": [0.2, 0, 0], "rotation_xyzw": [0, 0, -0.7071067811865475, 0.7071067811865476] }, "size_class": "M", "mate_kinds": ["structural", "shaft"] },
+    { "id": "face_bottom", "kind": "structural", "frame": { "position_m": [0, -0.025, 0], "rotation_xyzw": [0, 0, 1, 0] }, "size_class": "M", "mate_kinds": ["structural", "shaft"] },
+    { "id": "face_top", "kind": "structural", "frame": { "position_m": [0, 0.025, 0], "rotation_xyzw": [0, 0, 0, 1] }, "size_class": "M", "mate_kinds": ["structural", "shaft"] },
+    { "id": "face_back", "kind": "structural", "frame": { "position_m": [0, 0, -0.125], "rotation_xyzw": [-0.7071067811865475, 0, 0, 0.7071067811865476] }, "size_class": "M", "mate_kinds": ["structural", "shaft"] },
+    { "id": "face_front", "kind": "structural", "frame": { "position_m": [0, 0, 0.125], "rotation_xyzw": [0.7071067811865475, 0, 0, 0.7071067811865476] }, "size_class": "M", "mate_kinds": ["structural", "shaft"] }
+  ],
+  "electrical_ports": [],
+  "simulation": { "model": "rigid_body", "fidelity": "functional", "parameters": {} },
+  "geometry": { "primitive": "box" },
+  "provenance": { "kind": "generic", "source_urls": [], "license": "RoboWorld primitive definition; authored in repository" }
+}

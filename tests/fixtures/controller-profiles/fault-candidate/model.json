@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "modelId": "rover-motor-uart-echo-noecho-grammar-controller-fault-candidate-v8",
+  "maximumRules": 16,
+  "rules": [
+    {
+      "inputEndpointId": "uart.motor.left_percent",
+      "inputKind": 3,
+      "outputEndpointId": "tim3.ch1.duty_fraction",
+      "outputKind": 2,
+      "operator": 3,
+      "gain": 0.01,
+      "offset": 0,
+      "minimumInput": -100,
+      "maximumInput": 100,
+      "unit": "fraction"
+    },
+    {
+      "inputEndpointId": "uart.motor.left_percent",
+      "inputKind": 3,
+      "outputEndpointId": "gpio.pd2.direction",
+      "outputKind": 1,
+      "operator": 4,
+      "gain": 0,
+      "offset": 0,
+      "minimumInput": -100,
+      "maximumInput": 100,
+      "unit": "level"
+    },
+    {
+      "inputEndpointId": "uart.motor.right_percent",
+      "inputKind": 3,
+      "outputEndpointId": "tim3.ch2.duty_fraction",
+      "outputKind": 2,
+      "operator": 3,
+      "gain": 0.01,
+      "offset": 0,
+      "minimumInput": -100,
+      "maximumInput": 100,
+      "unit": "fraction"
+    },
+    {
+      "inputEndpointId": "uart.motor.right_percent",
+      "inputKind": 3,
+      "outputEndpointId": "gpio.pd3.direction",
+      "outputKind": 1,
+      "operator": 4,
+      "gain": 0,
+      "offset": 0,
+      "minimumInput": -100,
+      "maximumInput": 100,
+      "unit": "level"
+    }
+  ],
+  "maximumUartLineBytes": 47,
+  "uartCommands": [
+    {
+      "commandToken": "PING",
+      "operandCount": 0,
+      "minimumOperand": -100,
+      "maximumOperand": 100,
+      "responseEndpointId": "uart.tx",
+      "operandBindings": [],
+      "responseBytes": "UE9ORyA4MWFjZTY0MQo=",
+      "isUnsupported": false,
+      "numericResponseCommandToken": null
+    },
+    {
+      "commandToken": "MOTOR",
+      "operandCount": 2,
+      "minimumOperand": -100,
+      "maximumOperand": 100,
+      "responseEndpointId": "uart.tx",
+      "operandBindings": [
+        {
+          "operandIndex": 0,
+          "inputEndpointId": "uart.motor.left_percent"
+        },
+        {
+          "operandIndex": 1,
+          "inputEndpointId": "uart.motor.right_percent"
+        }
+      ],
+      "responseBytes": "T0sgTU9UT1IK",
+      "isUnsupported": false,
+      "numericResponseCommandToken": null
+    },
+    {
+      "commandToken": "MOVE",
+      "operandCount": 2,
+      "minimumOperand": 100,
+      "maximumOperand": 100,
+      "responseEndpointId": "uart.tx",
+      "operandBindings": [],
+      "responseBytes": "RVJSIENNRAo=",
+      "isUnsupported": false,
+      "numericResponseCommandToken": null
+    },
+    {
+      "commandToken": "SENSOR?",
+      "operandCount": 0,
+      "minimumOperand": 0,
+      "maximumOperand": 0,
+      "responseEndpointId": "uart.tx",
+      "operandBindings": [],
+      "responseBytes": null,
+      "isUnsupported": false,
+      "numericResponseCommandToken": "SENSOR?"
+    },
+    {
+      "commandToken": "STATUS?",
+      "operandCount": 0,
+      "minimumOperand": 0,
+      "maximumOperand": 0,
+      "responseEndpointId": "uart.tx",
+      "operandBindings": [],
+      "responseBytes": "U1RBVFVTIE1DVT1PSyBVQVJUPU9LCg==",
+      "isUnsupported": false,
+      "numericResponseCommandToken": null
+    }
+  ],
+  "uartInputEndpointId": "uart.rx",
+  "overlengthUartResponseBytes": "RVJSIExJTkUK",
+  "echoPulse": {
+    "inputEndpointId": "gpio.pa0.echo",
+    "gain": 0.0001714872386075572,
+    "offset": -0.2792457027846922,
+    "minimumPulseWidthNs": 5819302,
+    "maximumPulseWidthNs": 14584261,
+    "responseCommandToken": "SENSOR?",
+    "responsePrefix": "DIST mm=",
+    "responseSuffix": " valid=1\n",
+    "noPulseBehavior": 1,
+    "initialInvalidResponseBytes": "RElTVCBtbT0wIHZhbGlkPTAK"
+  },
+  "exactUartLines": [
+    {
+      "requestBytes": "UElORyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA=",
+      "responseBytes": "RVJSIENNRAo="
+    },
+    {
+      "requestBytes": "TU9UT1IgMTAxIDA=",
+      "responseBytes": "RVJSIFJBTkdFCg=="
+    },
+    {
+      "requestBytes": "TU9UT1IgLTEwMSAw",
+      "responseBytes": "RVJSIFJBTkdFCg=="
+    },
+    {
+      "requestBytes": "TU9UT1IgMQ==",
+      "responseBytes": "RVJSIENNRAo="
+    },
+    {
+      "requestBytes": "cGluZw==",
+      "responseBytes": "RVJSIENNRAo="
+    }
+  ],
+  "initialUartOutputBytes": "Qk9PVCA4MWFjZTY0MQo=",
+  "faultRules": [
+    {
+      "inputEndpointId": "controller.fault",
+      "faultCode": "MCU_HALTED",
+      "behavior": 0
+    }
+  ]
+}

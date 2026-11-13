@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/RoboWorld.Contracts/RoboWorld.Contracts.csproj" />
+    <ProjectReference Include="../../src/RoboWorld.Domain/RoboWorld.Domain.csproj" />
+    <ProjectReference Include="../../src/RoboWorld.RobotService/RoboWorld.RobotService.csproj" />
+  </ItemGroup>
+</Project>

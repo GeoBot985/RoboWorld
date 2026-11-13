@@ -1,0 +1,4 @@
+# A unified-diff patch encodes empty context lines as one leading space.
+tools/renode-patches/*.patch whitespace=-blank-at-eol
+# Preserve upstream source bytes while allowing its existing final blank line.
+samples/firmware/*/main.c whitespace=-blank-at-eof

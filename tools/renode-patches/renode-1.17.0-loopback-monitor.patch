@@ -1,0 +1,125 @@
+diff --git a/src/Emulator/Extensions/Analyzers/SocketUartAnalyzer.cs b/src/Emulator/Extensions/Analyzers/SocketUartAnalyzer.cs
+index 4c7ed6f..dd1b0bf 100644
+--- a/src/Emulator/Extensions/Analyzers/SocketUartAnalyzer.cs
++++ b/src/Emulator/Extensions/Analyzers/SocketUartAnalyzer.cs
+@@ -5,6 +5,7 @@
+ // Full license text is available in 'licenses/MIT.txt'.
+ //
+ using System;
++using System.Net;
+ using System.Text;
+ 
+ using Antmicro.Migrant;
+@@ -71,7 +72,7 @@ public void DisconnectState()
+ 
+         private void StartServer()
+         {
+-            server = new SocketServerProvider(true, false, serverName: "UartSocketTerminalServer");
++            server = new SocketServerProvider(true, false, serverName: "UartSocketTerminalServer", bindAddress: IPAddress.Loopback);
+             server.DataReceived += WriteToUart;
+ 
+             server.Start(0);
+diff --git a/src/Emulator/Main/Backends/Terminals/ServerSocketTerminal.cs b/src/Emulator/Main/Backends/Terminals/ServerSocketTerminal.cs
+index 1e17443..ae72936 100644
+--- a/src/Emulator/Main/Backends/Terminals/ServerSocketTerminal.cs
++++ b/src/Emulator/Main/Backends/Terminals/ServerSocketTerminal.cs
+@@ -7,6 +7,7 @@
+ //
+ 
+ using System;
++using System.Net;
+ 
+ using Antmicro.Migrant;
+ using Antmicro.Renode.Core;
+@@ -32,7 +33,7 @@ public class ServerSocketTerminal : BackendTerminal, IDisposable
+     {
+         public ServerSocketTerminal(int port, bool telnetMode = true, bool flushOnConnect = false)
+         {
+-            server = new SocketServerProvider(telnetMode, flushOnConnect, serverName: "Terminal");
++            server = new SocketServerProvider(telnetMode, flushOnConnect, serverName: "Terminal", bindAddress: IPAddress.Loopback);
+             server.DataReceived += b => CallCharReceived((byte)b);
+ 
+             server.Start(port);
+@@ -50,4 +51,4 @@ public void Dispose()
+ 
+         private readonly SocketServerProvider server;
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/Emulator/Main/Utilities/GDB/GdbStub.cs b/src/Emulator/Main/Utilities/GDB/GdbStub.cs
+index cb3cb97..201662c 100644
+--- a/src/Emulator/Main/Utilities/GDB/GdbStub.cs
++++ b/src/Emulator/Main/Utilities/GDB/GdbStub.cs
+@@ -8,6 +8,7 @@
+ using System.Collections.Generic;
+ using System.IO;
+ using System.Linq;
++using System.Net;
+ 
+ using Antmicro.Migrant;
+ using Antmicro.Renode.Core;
+@@ -23,7 +24,7 @@ public class GdbStub : IDisposable, IExternal, IDisconnectableState
+         public GdbStub(IMachine machine, IEnumerable<ICpuSupportingGdb> cpus, int port, bool autostartEmulation)
+             : this(machine, cpus)
+         {
+-            terminal = new SocketServerProvider(false, serverName: "GDB");
++            terminal = new SocketServerProvider(false, serverName: "GDB", bindAddress: IPAddress.Loopback);
+             SetupTerminal(connected: false, autostartEmulation: autostartEmulation);
+             terminal.Start(port);
+             LogsEnabled = false;
+diff --git a/src/Emulator/Main/Utilities/SocketIOSource.cs b/src/Emulator/Main/Utilities/SocketIOSource.cs
+index b403be3..ad2b9d8 100644
+--- a/src/Emulator/Main/Utilities/SocketIOSource.cs
++++ b/src/Emulator/Main/Utilities/SocketIOSource.cs
+@@ -7,6 +7,7 @@
+ //
+ using AntShell.Helpers;
+ using AntShell.Terminal;
++using System.Net;
+ 
+ namespace Antmicro.Renode.Utilities
+ {
+@@ -14,7 +15,7 @@ public class SocketIOSource : IActiveIOSource, ISizeSource
+     {
+         public SocketIOSource(int port)
+         {
+-            server = new SocketServerProvider();
++            server = new SocketServerProvider(bindAddress: IPAddress.Loopback);
+             server.Start(port);
+         }
+ 
+diff --git a/src/Emulator/Main/Utilities/SocketServerProvider.cs b/src/Emulator/Main/Utilities/SocketServerProvider.cs
+index 22a9ba0..5b2966d 100644
+--- a/src/Emulator/Main/Utilities/SocketServerProvider.cs
++++ b/src/Emulator/Main/Utilities/SocketServerProvider.cs
+@@ -24,18 +24,19 @@ namespace Antmicro.Renode.Utilities
+ {
+     public class SocketServerProvider : IDisposable
+     {
+-        public SocketServerProvider(bool telnetMode = true, bool flushOnConnect = false, string serverName = "")
++        public SocketServerProvider(bool telnetMode = true, bool flushOnConnect = false, string serverName = "", IPAddress bindAddress = null)
+         {
+             queue = new ConcurrentQueue<byte[]>();
+             enqueuedEvent = new AutoResetEvent(false);
+             this.telnetMode = telnetMode;
+             this.flushOnConnect = flushOnConnect;
+             this.serverName = serverName;
++            this.bindAddress = bindAddress ?? IPAddress.Any;
+         }
+ 
+         public void Start(int port)
+         {
+-            server = SocketsManager.Instance.AcquireSocket(null, AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp, new IPEndPoint(IPAddress.Any, port), listeningBacklog: 1, nameAppendix: this.serverName);
++            server = SocketsManager.Instance.AcquireSocket(null, AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp, new IPEndPoint(this.bindAddress, port), listeningBacklog: 1, nameAppendix: this.serverName);
+ 
+             listenerThread = new Thread(ListenerThreadBody)
+             {
+@@ -478,5 +479,7 @@ private void ListenerThreadBody()
+         private readonly bool flushOnConnect;
+         private readonly string serverName;
+ 
++        private readonly IPAddress bindAddress;
++
+         private const int IACEscape = 255;
+         private const int MaxReadThreadPoolingTimeMs = 60;

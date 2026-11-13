@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "profileId": "rover-unqualified-81E842E9081CB6E0",
+  "identity": {
+    "schemaVersion": 1,
+    "firmwareSha256": "5D5973A2E119167EF3C2EF18E8929E8AD9735AD65A63B639179256547575B6E9",
+    "controllerType": "stm32f407vg",
+    "boardContractId": "stm32f4_discovery_stm32f407vg",
+    "boardContractVersion": "1.0.0",
+    "robotGraphSha256": "A231842F6D4A2A4641E4DD2BAD84EDAB7E360DAD9BBCFFA95A8DA03E0D50C26F",
+    "componentDefinitionsSha256": "E3EE85EE70C6908793542F6800A0E30602625695270FAD5D1FC6F416791C90C4",
+    "peripheralMapSha256": "6A1E285B2DE274DCEF446E9430D8F6B977C0E891CA3947B2FA73ADBA4C494726",
+    "initialStateSha256": "2EE7FF36D95FE0FA33AA5BC93673B6E80D197C1DBDEF5409E1C093F4F6854A22",
+    "characterizationSchemaVersion": "trace-schema-1",
+    "generatorVersion": "goal03-motor-uart-echo-pulse-grammar-1.0.0",
+    "modelSchemaVersion": "1",
+    "evaluatorVersion": "campaign-evaluator-2\u002Buart-transducer-6\u002Bexact-line-rule-2\u002Becho-pulse-state-2\u002Bheldout-pulse-replay-1\u002Bline-bound-47\u002Bstatus-range-grammar-1\u002Binitial-uart-output-1",
+    "inputEnvelopeSha256": "307DDF5E949BDB2C97EEB04135A1874B1D5BD1D8B7933E48615FDE6B7A371E10"
+  },
+  "envelope": {
+    "supportedEndpoints": [
+      "gpio.pa0.echo",
+      "uart.rx"
+    ],
+    "supportedSignals": [
+      1,
+      0
+    ],
+    "minimumSimTimeNs": 0,
+    "maximumSimTimeNs": 9223372036854775807,
+    "maximumEventsPerAdvance": 8,
+    "maximumUartBytesPerSecond": 115200
+  },
+  "modelDocumentSha256": "187DD83471E2018B3628D8DA3FFE0B7B7DD857FE2FE4B6B683F99588A0F0F43A",
+  "traceCorpusSha256": "F04C0A3B764A377D95187EDC7A3A9906E017243A73801093D3EFEE9D3D5DB1FB",
+  "heldOutSequencesSha256": "EA04936767C245E21C6154EE3A4744D94E2D60292D73153ADFDFCA9EB22A7AE5",
+  "heldOutSequenceCount": 8,
+  "validationMetrics": {
+    "training_sequence_count": 16,
+    "heldout_sequence_count": 8,
+    "heldout_motor_command_count": 24,
+    "heldout_duty_error_p95_percentage_points": 0,
+    "heldout_duty_error_max_percentage_points": 0,
+    "uart_receive_bracket_p95_width_ns": 0,
+    "scheduled_input_to_output_latency_min_ns": 8333333,
+    "scheduled_input_to_output_latency_max_ns": 8333334,
+    "heldout_direction_mismatches": 0,
+    "heldout_echo_pulse_response_error_p95_mm": 1,
+    "heldout_echo_pulse_response_error_max_mm": 1,
+    "heldout_echo_uart_exact_grammar_fraction": 1,
+    "heldout_uart_line_boundary_exact_response_count": 4,
+    "heldout_uart_command_grammar_exact_response_count": 10
+  },
+  "supportedBehaviors": [
+    "training-derived PING response",
+    "training-derived valid MOTOR command response",
+    "training-derived observed MOVE rejection response",
+    "training-derived observed overlength-line rejection response",
+    "measured per-tick PWM duty magnitude and direction for valid MOTOR operands",
+    "measured GPIO echo pulse width maps to training-derived SENSOR? response grammar",
+    "training-derived STATUS? response and exact measured MOTOR range/malformed command responses",
+    "training-derived exact 47-byte malformed UART line response and measured 48-byte overlength response"
+  ],
+  "unsupportedBehaviors": [
+    "malformed other than exact measured lines, unknown and unmeasured range-invalid UART commands",
+    "exact UART reply scheduling/latency, normal asynchronous byte timing and framing",
+    "fault and latch transitions",
+    "loaded trajectory and motion fidelity",
+    "unseen firmware state and interrupts",
+    "sensor no-echo, timeout, overlap, noise, and recovery behavior"
+  ],
+  "fidelityLabel": "UNQUALIFIED"
+}

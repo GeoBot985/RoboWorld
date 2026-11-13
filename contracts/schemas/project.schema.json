@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "world_file",
+    "robot_files",
+    "component_files",
+    "default_mode",
+    "settings"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "world_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "robot_files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "component_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "default_mode": {
+      "type": "string",
+      "enum": [
+        "junior",
+        "robotics",
+        "advanced"
+      ]
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "physics_hz": {
+          "type": "integer",
+          "minimum": 30,
+          "maximum": 480
+        },
+        "realtime_target": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 5
+        },
+        "renderer_target_fps": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 240
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "id": "rw.motor.geared.slow",
+  "version": "1.0.0",
+  "display_name": "Generic Geared Motor 100 RPM",
+  "category": "actuator",
+  "mechanical": {
+    "mass_kg": 0.19,
+    "size_m": [0.095, 0.045, 0.045]
+  },
+  "mount_ports": [
+    {
+      "id": "mount",
+      "kind": "structural",
+      "frame": { "position_m": [0, 0, 0], "rotation_xyzw": [0, 0, 0, 1] },
+      "size_class": "M",
+      "mate_kinds": ["structural"]
+    }
+  ],
+  "electrical_ports": [
+    { "id": "drive", "interface": "motor_channel", "role": "hbridge_pair_functional" }
+  ],
+  "simulation": {
+    "model": "dc_motor",
+    "fidelity": "functional",
+    "parameters": { "stall_torque_nm": 0.35, "no_load_rpm": 100 }
+  },
+  "geometry": { "primitive": "box" },
+  "provenance": {
+    "kind": "generic",
+    "source_urls": [],
+    "license": "RoboWorld example fixture (no third-party geometry)"
+  }
+}

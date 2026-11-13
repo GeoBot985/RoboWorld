@@ -1,0 +1,446 @@
+{
+  "schema_version": "1.0",
+  "id": "rover-multi-01",
+  "display_name": "Multi-controller Rover",
+  "root_link_id": "base",
+  "links": [
+    {
+      "id": "base",
+      "base_component_id": "chassis",
+      "initial_transform": {
+        "position_m": [
+          0,
+          0.185,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "is_root": true
+    },
+    {
+      "id": "wheel-left-link",
+      "base_component_id": "wheel-left",
+      "initial_transform": {
+        "position_m": [
+          -0.19,
+          0.055,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "wheel-right-link",
+      "base_component_id": "wheel-right",
+      "initial_transform": {
+        "position_m": [
+          0.19,
+          0.055,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "components": [
+    {
+      "id": "chassis",
+      "catalogue_id": "rw.chassis.rect",
+      "catalogue_version": "1.0.0",
+      "link_id": "base",
+      "transform": {
+        "position_m": [
+          0,
+          0,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "wheel-left",
+      "catalogue_id": "rw.wheel.standard",
+      "catalogue_version": "1.0.0",
+      "link_id": "wheel-left-link",
+      "transform": {
+        "position_m": [
+          0,
+          0,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "wheel-right",
+      "catalogue_id": "rw.wheel.standard",
+      "catalogue_version": "1.0.0",
+      "link_id": "wheel-right-link",
+      "transform": {
+        "position_m": [
+          0,
+          0,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "motor-left",
+      "catalogue_id": "rw.motor.geared",
+      "catalogue_version": "1.0.0",
+      "link_id": "base",
+      "transform": {
+        "position_m": [
+          -0.15,
+          -0.02,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "motor-right",
+      "catalogue_id": "rw.motor.geared",
+      "catalogue_version": "1.0.0",
+      "link_id": "base",
+      "transform": {
+        "position_m": [
+          0.15,
+          -0.02,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "driver",
+      "catalogue_id": "rw.driver.dual",
+      "catalogue_version": "1.0.0",
+      "link_id": "base",
+      "transform": {
+        "position_m": [
+          0,
+          0.05,
+          -0.03
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "mcu-board",
+      "catalogue_id": "rw.mcu.stm32f407vg",
+      "catalogue_version": "1.0.0",
+      "link_id": "base",
+      "transform": {
+        "position_m": [
+          0,
+          0.08,
+          0.05
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "distance",
+      "catalogue_id": "rw.sensor.distance",
+      "catalogue_version": "1.0.0",
+      "link_id": "base",
+      "transform": {
+        "position_m": [
+          0,
+          0.06,
+          -0.17
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "caster-rear",
+      "catalogue_id": "rw.caster.ball",
+      "catalogue_version": "1.0.0",
+      "link_id": "base",
+      "transform": {
+        "position_m": [
+          0,
+          -0.15,
+          0.14
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "battery",
+      "catalogue_id": "rw.battery.pack12",
+      "catalogue_version": "1.0.0",
+      "link_id": "base",
+      "transform": {
+        "position_m": [
+          0,
+          0.08,
+          0.1
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "catalogue_id": "rw.mcu.stm32f407vg",
+      "link_id": "base",
+      "catalogue_version": "1.0.0",
+      "transform": {
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "position_m": [
+          -0.05,
+          0.08,
+          0.08
+        ]
+      },
+      "id": "mcu-board-aux"
+    }
+  ],
+  "joints": [
+    {
+      "id": "joint-left",
+      "type": "continuous",
+      "parent_link_id": "base",
+      "child_link_id": "wheel-left-link",
+      "parent_port_id": "left",
+      "child_port_id": "hub",
+      "axis_local": [
+        1,
+        0,
+        0
+      ],
+      "parent_frame": {
+        "position_m": [
+          -0.19,
+          -0.13,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "child_frame": {
+        "position_m": [
+          0,
+          0,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "actuator_component_id": "motor-left"
+    },
+    {
+      "id": "joint-right",
+      "type": "continuous",
+      "parent_link_id": "base",
+      "child_link_id": "wheel-right-link",
+      "parent_port_id": "right",
+      "child_port_id": "hub",
+      "axis_local": [
+        1,
+        0,
+        0
+      ],
+      "parent_frame": {
+        "position_m": [
+          0.19,
+          -0.13,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "child_frame": {
+        "position_m": [
+          0,
+          0,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "actuator_component_id": "motor-right"
+    }
+  ],
+  "electrical_connections": [
+    {
+      "id": "w-pwm-left",
+      "from": "mcu-board.pwm1",
+      "to": "driver.pwm_a",
+      "interface": "pwm",
+      "physical_pin": "PA6"
+    },
+    {
+      "id": "w-dir-left",
+      "from": "mcu-board.dir1",
+      "to": "driver.dir_a",
+      "interface": "gpio",
+      "physical_pin": "PD2"
+    },
+    {
+      "id": "w-left",
+      "from": "driver.out_a",
+      "to": "motor-left.drive",
+      "interface": "motor_channel"
+    },
+    {
+      "id": "w-right",
+      "from": "driver.out_b",
+      "to": "motor-right.drive",
+      "interface": "motor_channel"
+    },
+    {
+      "id": "w-distance",
+      "from": "distance.echo",
+      "to": "mcu-board.sensor",
+      "interface": "gpio",
+      "physical_pin": "PA0"
+    },
+    {
+      "id": "w-battery-driver",
+      "from": "battery.supply",
+      "to": "driver.vin",
+      "interface": "power"
+    },
+    {
+      "id": "w-battery-mcu",
+      "from": "battery.supply",
+      "to": "mcu-board.power_in",
+      "interface": "power"
+    },
+    {
+      "interface": "power",
+      "to": "mcu-board-aux.power_in",
+      "from": "battery.supply",
+      "id": "w-battery-mcu-aux"
+    },
+    {
+      "physical_pin": "PA6",
+      "interface": "pwm",
+      "id": "w-aux-pwm-right",
+      "from": "mcu-board-aux.pwm1",
+      "to": "driver.pwm_b"
+    },
+    {
+      "physical_pin": "PD2",
+      "interface": "gpio",
+      "id": "w-aux-dir-right",
+      "from": "mcu-board-aux.dir1",
+      "to": "driver.dir_b"
+    }
+  ],
+  "controllers": [
+    {
+      "id": "mcu-drive",
+      "component_instance_id": "mcu-board",
+      "board": "stm32f4_discovery_stm32f407vg",
+      "firmware": {
+        "relative_path": "firmware/stm32-drive.elf",
+        "target": "stm32f407vg"
+      },
+      "uart_channels": [
+        "uart"
+      ]
+    },
+    {
+      "component_instance_id": "mcu-board-aux",
+      "board": "stm32f4_discovery_stm32f407vg",
+      "uart_channels": [
+        "uart"
+      ],
+      "firmware": {
+        "relative_path": "firmware/stm32-arm.elf",
+        "target": "stm32f407vg"
+      },
+      "id": "mcu-aux"
+    }
+  ]
+}

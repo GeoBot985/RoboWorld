@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "id": "rw.primitive.cylinder",
+  "version": "1.0.0",
+  "display_name": "Cylinder Primitive",
+  "category": "mobility",
+  "mechanical": { "mass_kg": 0.2, "size_m": [0.12, 0.03, 0.12] },
+  "mount_ports": [
+    { "id": "end_minus", "kind": "shaft", "frame": { "position_m": [0, -0.015, 0], "rotation_xyzw": [0, 0, 0, 1] }, "size_class": "M", "mate_kinds": ["structural"] },
+    { "id": "end_plus", "kind": "shaft", "frame": { "position_m": [0, 0.015, 0], "rotation_xyzw": [0, 0, 0, 1] }, "size_class": "M", "mate_kinds": ["structural"] }
+  ],
+  "electrical_ports": [],
+  "simulation": { "model": "rigid_body", "fidelity": "functional", "parameters": {} },
+  "geometry": { "primitive": "cylinder" },
+  "provenance": { "kind": "generic", "source_urls": [], "license": "RoboWorld primitive definition; authored in repository" }
+}

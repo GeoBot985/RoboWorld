@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "display_name",
+    "bounds_m",
+    "gravity_mps2",
+    "world_seed",
+    "objects"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": ["1.0", "1.1"]
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "bounds_m": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "gravity_mps2": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "world_seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "asset_ref",
+          "transform",
+          "geometry",
+          "physics"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "asset_ref": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+          },
+          "transform": {
+            "type": "object",
+            "required": [
+              "position_m",
+              "rotation_xyzw"
+            ],
+            "properties": {
+              "position_m": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "rotation_xyzw": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 4,
+                "maxItems": 4
+              }
+            },
+            "additionalProperties": false
+          },
+          "geometry": {
+            "type": "object",
+            "required": [
+              "primitive"
+            ],
+            "properties": {
+              "primitive": {
+                "type": "string",
+                "enum": [
+                  "room",
+                  "box",
+                  "cylinder",
+                  "sphere",
+                  "mesh"
+                ]
+              },
+              "size_m": {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "radius_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "height_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "additionalProperties": false
+          },
+          "physics": {
+            "type": "object",
+            "required": [
+              "body_type"
+            ],
+            "properties": {
+              "body_type": {
+                "type": "string",
+                "enum": [
+                  "static",
+                  "dynamic",
+                  "kinematic"
+                ]
+              },
+              "mass_kg": {
+                "type": "number",
+                "minimum": 0
+              },
+              "friction_coefficient": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "relationships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "target_id"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "on_top_of",
+                    "attached_to",
+                    "inside"
+                  ]
+                },
+                "target_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

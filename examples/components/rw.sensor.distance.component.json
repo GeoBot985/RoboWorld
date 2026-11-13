@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "id": "rw.sensor.distance",
+  "version": "1.0.0",
+  "display_name": "Rw Sensor Distance",
+  "category": "sensor",
+  "mechanical": {
+    "mass_kg": 0.025,
+    "size_m": [
+      0.04,
+      0.03,
+      0.03
+    ]
+  },
+  "mount_ports": [
+    {
+      "id": "mount",
+      "kind": "sensor",
+      "frame": {
+        "position_m": [
+          0,
+          0,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "size_class": "M"
+    }
+  ],
+  "electrical_ports": [
+    {
+      "id": "echo",
+      "interface": "gpio"
+    }
+  ],
+  "simulation": {
+    "model": "distance_raycast",
+    "fidelity": "functional",
+    "parameters": {
+      "max_range_m": 4.0,
+      "sample_hz": 10
+    }
+  },
+  "geometry": {
+    "primitive": "box"
+  },
+  "provenance": {
+    "kind": "generic",
+    "source_urls": [],
+    "license": "RoboWorld example fixture (no third-party geometry)"
+  }
+}

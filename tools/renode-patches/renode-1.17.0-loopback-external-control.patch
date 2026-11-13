@@ -1,0 +1,26 @@
+diff --git a/src/Renode/Network/ExternalControl/ExternalControlSocket.cs b/src/Renode/Network/ExternalControl/ExternalControlSocket.cs
+index dffac91..1ec9b56 100644
+--- a/src/Renode/Network/ExternalControl/ExternalControlSocket.cs
++++ b/src/Renode/Network/ExternalControl/ExternalControlSocket.cs
+@@ -176,7 +176,7 @@ private void RestartConnection()
+                 }
+                 else
+                 {
+-                    communicationSocket.Bind(new IPEndPoint(IPAddress.Any, port));
++                    communicationSocket.Bind(new IPEndPoint(IPAddress.Loopback, port));
+                     communicationSocket.Listen(backlog: 1);
+                 }
+             }
+@@ -265,11 +265,11 @@ private void RxThreadBody()
+                 InitializeHandlers();
+             }
+ 
++            var headerBuffer = new byte[Message.HeaderSize];
+             while(true)
+             {
+                 try
+                 {
+-                    Span<byte> headerBuffer = stackalloc byte[Message.HeaderSize];
+                     ReceiveAll(communicationSocket, headerBuffer);
+                     if(!Message.TryDecodeHeader(headerBuffer, out var message))
+                     {

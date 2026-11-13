@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "id": "rw.chassis.rect",
+  "version": "1.0.0",
+  "display_name": "Rw Chassis Rect",
+  "category": "body",
+  "mechanical": {
+    "mass_kg": 2.0,
+    "size_m": [
+      0.42,
+      0.1,
+      0.32
+    ]
+  },
+  "mount_ports": [
+    {
+      "id": "left",
+      "kind": "shaft",
+      "frame": {
+        "position_m": [
+          -0.19,
+          -0.13,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "size_class": "M"
+    },
+    {
+      "id": "right",
+      "kind": "shaft",
+      "frame": {
+        "position_m": [
+          0.19,
+          -0.13,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "size_class": "M"
+    },
+    {
+      "id": "top",
+      "kind": "structural",
+      "frame": {
+        "position_m": [
+          0,
+          0.05,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "size_class": "M"
+    }
+  ],
+  "electrical_ports": [],
+  "simulation": {
+    "model": "rigid_body",
+    "fidelity": "functional",
+    "parameters": {}
+  },
+  "geometry": {
+    "primitive": "box"
+  },
+  "provenance": {
+    "kind": "generic",
+    "source_urls": [],
+    "license": "RoboWorld example fixture (no third-party geometry)"
+  }
+}

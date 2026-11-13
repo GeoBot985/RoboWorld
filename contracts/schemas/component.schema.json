@@ -1,0 +1,320 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "display_name",
+    "category",
+    "mechanical",
+    "mount_ports",
+    "electrical_ports",
+    "simulation",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "body",
+        "structure",
+        "mount",
+        "joint",
+        "actuator",
+        "mobility",
+        "end_effector",
+        "electronics",
+        "sensor",
+        "power",
+        "world_object"
+      ]
+    },
+    "mechanical": {
+      "type": "object",
+      "required": [
+        "mass_kg",
+        "size_m"
+      ],
+      "properties": {
+        "mass_kg": {
+          "type": "number",
+          "minimum": 0
+        },
+        "size_m": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "friction_coefficient": {
+          "type": "number",
+          "minimum": 0
+        },
+        "center_of_mass_m": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "inertia_kg_m2": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "additionalProperties": false
+    },
+    "mount_ports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "frame"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "structural",
+              "shaft",
+              "joint",
+              "tool",
+              "sensor"
+            ]
+          },
+          "frame": {
+            "type": "object",
+            "required": [
+              "position_m",
+              "rotation_xyzw"
+            ],
+            "properties": {
+              "position_m": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "rotation_xyzw": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 4,
+                "maxItems": 4
+              }
+            },
+            "additionalProperties": false
+          },
+          "size_class": {
+            "type": "string"
+          },
+          "mate_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "electrical_ports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "interface"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+          },
+          "interface": {
+            "type": "string",
+            "enum": [
+              "uart",
+              "gpio",
+              "pwm",
+              "i2c",
+              "spi",
+              "adc",
+              "power",
+              "motor_channel",
+              "encoder",
+              "can",
+              "usb_video"
+            ]
+          },
+          "role": {
+            "type": "string"
+          },
+          "pin": {
+            "type": "string",
+            "pattern": "^P[A-Z][0-9]{1,2}$"
+          },
+          "address": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 127
+          },
+          "voltage_nominal_v": {
+            "type": "number",
+            "minimum": 0
+          },
+          "max_current_a": {
+            "type": "number",
+            "minimum": 0
+          },
+          "capabilities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "simulation": {
+      "type": "object",
+      "required": [
+        "model",
+        "fidelity"
+      ],
+      "properties": {
+        "model": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+        },
+        "fidelity": {
+          "type": "string",
+          "enum": [
+            "experimental",
+            "functional",
+            "driver_compatible",
+            "calibrated"
+          ]
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "number",
+              "string",
+              "boolean"
+            ]
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "primitive": {
+          "type": "string",
+          "enum": [
+            "box",
+            "cylinder",
+            "sphere",
+            "capsule",
+            "mesh"
+          ]
+        },
+        "asset_path": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "kind",
+        "source_urls",
+        "license"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "generic",
+            "manufacturer",
+            "community"
+          ]
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "part_number": {
+          "type": "string"
+        },
+        "source_urls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "license": {
+          "type": "string"
+        },
+        "retrieved_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "driver_test_hashes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

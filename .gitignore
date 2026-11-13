@@ -1,0 +1,17 @@
+# Local development dependencies (install separately; see DEV_SETUP.md)
+.toolchain/
+.venv/
+
+# .NET, Godot, Python, and firmware build outputs
+**/bin/
+**/obj/
+**/.godot/
+**/__pycache__/
+samples/firmware/stm32-drive/build/
+samples/firmware/stm32-arm/build/
+
+# Local evidence, exports, and profiling data
+/artifacts/
+*.user
+*.suo
+.vs/

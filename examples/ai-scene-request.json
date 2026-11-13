@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "request_text": "Give me a 20m x 20m room with a table and a glass on the table.",
+  "scene": {
+    "room": {
+      "width_m": 20,
+      "depth_m": 20,
+      "height_m": 3
+    },
+    "objects": [
+      {
+        "id": "table-1",
+        "kind": "table",
+        "at": "center"
+      },
+      {
+        "id": "glass-1",
+        "kind": "glass",
+        "on_top_of": "table-1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "request_text",
+    "scene"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "request_text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "scene": {
+      "type": "object",
+      "required": [
+        "room",
+        "objects"
+      ],
+      "properties": {
+        "room": {
+          "type": "object",
+          "required": [
+            "width_m",
+            "depth_m",
+            "height_m"
+          ],
+          "properties": {
+            "width_m": {
+              "type": "number",
+              "minimum": 2,
+              "maximum": 500
+            },
+            "depth_m": {
+              "type": "number",
+              "minimum": 2,
+              "maximum": 500
+            },
+            "height_m": {
+              "type": "number",
+              "minimum": 2,
+              "maximum": 30
+            }
+          },
+          "additionalProperties": false
+        },
+        "objects": {
+          "type": "array",
+          "maxItems": 1000,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "kind"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "table",
+                  "glass",
+                  "shelf",
+                  "chair",
+                  "box",
+                  "pallet",
+                  "charging_station",
+                  "door",
+                  "wall",
+                  "robot_spawn"
+                ]
+              },
+              "on_top_of": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,127}$"
+              },
+              "at": {
+                "type": "string",
+                "enum": [
+                  "center",
+                  "near_wall",
+                  "left",
+                  "right",
+                  "random",
+                  "explicit"
+                ]
+              },
+              "position_m": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

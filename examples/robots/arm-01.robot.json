@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.0",
+  "id": "arm-01",
+  "display_name": "Stationary Single-Joint Arm",
+  "root_link_id": "arm-base-link",
+  "links": [
+    {
+      "id": "arm-base-link",
+      "base_component_id": "arm-base",
+      "initial_transform": {
+        "position_m": [
+          -2,
+          0.055,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "is_root": true
+    },
+    {
+      "id": "arm-upper-link",
+      "base_component_id": "arm-beam",
+      "initial_transform": {
+        "position_m": [
+          -2,
+          0.305,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "components": [
+    {
+      "id": "arm-base",
+      "catalogue_id": "rw.chassis.rect",
+      "catalogue_version": "1.0.0",
+      "link_id": "arm-base-link",
+      "transform": {
+        "position_m": [
+          0,
+          0,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "arm-beam",
+      "catalogue_id": "rw.beam.structural",
+      "catalogue_version": "1.0.0",
+      "link_id": "arm-upper-link",
+      "transform": {
+        "position_m": [
+          0,
+          0,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "link_id": "arm-base-link",
+      "id": "arm-motor",
+      "catalogue_version": "1.0.0",
+      "transform": {
+        "position_m": [
+          0.07,
+          0.08,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "catalogue_id": "rw.motor.geared"
+    },
+    {
+      "link_id": "arm-base-link",
+      "id": "arm-driver",
+      "catalogue_version": "1.0.0",
+      "transform": {
+        "position_m": [
+          0,
+          0.08,
+          -0.04
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "catalogue_id": "rw.driver.dual"
+    },
+    {
+      "link_id": "arm-base-link",
+      "id": "arm-mcu",
+      "catalogue_version": "1.0.0",
+      "transform": {
+        "position_m": [
+          -0.07,
+          0.08,
+          0.05
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "catalogue_id": "rw.mcu.stm32f407vg"
+    },
+    {
+      "link_id": "arm-base-link",
+      "id": "arm-battery",
+      "catalogue_version": "1.0.0",
+      "transform": {
+        "position_m": [
+          0,
+          0.08,
+          0.1
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "catalogue_id": "rw.battery.pack12"
+    }
+  ],
+  "joints": [
+    {
+      "id": "arm-shoulder",
+      "type": "revolute",
+      "joint_profile_id": "rw.mount.revolute",
+      "joint_profile_version": "1.0.0",
+      "parent_link_id": "arm-base-link",
+      "child_link_id": "arm-upper-link",
+      "parent_port_id": "top",
+      "child_port_id": "bottom",
+      "axis_local": [
+        0,
+        1,
+        0
+      ],
+      "parent_frame": {
+        "position_m": [
+          0,
+          0.05,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "child_frame": {
+        "position_m": [
+          0,
+          -0.2,
+          0
+        ],
+        "rotation_xyzw": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "limits": {
+        "lower": -1.2,
+        "upper": 1.2,
+        "unit": "rad"
+      },
+      "actuator_component_id": "arm-motor"
+    }
+  ],
+  "electrical_connections": [
+    {
+      "from": "arm-mcu.pwm1",
+      "id": "arm-pwm",
+      "interface": "pwm",
+      "physical_pin": "PA6",
+      "to": "arm-driver.pwm_a"
+    },
+    {
+      "from": "arm-mcu.dir1",
+      "id": "arm-dir",
+      "interface": "gpio",
+      "physical_pin": "PD2",
+      "to": "arm-driver.dir_a"
+    },
+    {
+      "from": "arm-driver.out_a",
+      "id": "arm-motor-wire",
+      "interface": "motor_channel",
+      "to": "arm-motor.drive"
+    },
+    {
+      "from": "arm-battery.supply",
+      "id": "arm-battery-driver",
+      "interface": "power",
+      "to": "arm-driver.vin"
+    },
+    {
+      "from": "arm-battery.supply",
+      "id": "arm-battery-mcu",
+      "interface": "power",
+      "to": "arm-mcu.power_in"
+    }
+  ],
+  "controllers": [
+    {
+      "uart_channels": [
+        "uart"
+      ],
+      "id": "arm-controller",
+      "component_instance_id": "arm-mcu",
+      "board": "stm32f4_discovery_stm32f407vg",
+      "firmware": {
+        "relative_path": "firmware/stm32-arm.elf",
+        "target": "stm32f407vg"
+      }
+    }
+  ]
+}
